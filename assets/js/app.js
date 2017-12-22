@@ -9,7 +9,7 @@
   };
   firebase.initializeApp(config);
 
-  
+
 
 //Components that we need in general terms
 // What should appear when the page opens. Dynamically generated
@@ -17,4 +17,4 @@
 //Ajax call for PetFinder
 //Ajax call for Google Places
 // Match results to Google maps
- Testing Testing 
+// Testing Testing 
