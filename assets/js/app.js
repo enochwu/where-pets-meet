@@ -9,7 +9,11 @@
   };
   firebase.initializeApp(config);
 
+
+
+
 var database = firebase.database();
+
 
 //Components that we need in general terms
 // What should appear when the page opens. Dynamically generated
