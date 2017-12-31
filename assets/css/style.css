@@ -21,6 +21,7 @@ h2 {
     padding-bottom: 10px;
      font-size: 1.56rem;
     line-height: 250%;
+    /* margin: 1.78rem 0 1.424rem 0; */
 }
 
 h1 {
@@ -29,81 +30,12 @@ h1 {
     text-align: center;
     text-shadow: 0 0 4px #666;
     padding-bottom: 10px;
-
+    /* font-size: 4.2rem; */
+    /* line-height: 110%; */
+    /* color: antiquewhite; */
+    /* margin: 2.1rem 0 1.68rem 0; */
 }
 
-/*inner text*/
-
-.txt {
-    text-shadow: 0 1px 4px rgba(77,71,81,.3);
-    margin-bottom: 20px;
-    color: #fff;
-    text-align: -webkit-center;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.6;
-    text-decoration: none;
-    text-transform: none;
-}
-
-* {
-    -webkit-overflow-scrolling: touch;
-}
-p {
-    display: block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-}
-
-.btn_clear {
-    border-color: #fff;
-    background-color: transparent important! ;
-    text-shadow: 0 1px 3px rgba(77,71,81,.3);
-}
-
-.btn {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: #e91e63;
-    color: inherit;
-    text-decoration: inherit;
-    text-align: left;
-    cursor: pointer;
-    overflow: hidden;
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 45px;
-    max-width: 100%;
-    padding: 11px 30px;
-    border: 2px solid #fff;
-    border-radius: 23px;
-    /*background-color: transparent;*/
-    -webkit-box-shadow: 0 1px 3px rgba(77,71,81,.2);
-    box-shadow: 0 1px 3px rgba(77,71,81,.2);
-    color: #fff;
-    white-space: nowrap;
-    text-align: center;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    -webkit-appearance: none;
-    font-size: 1.2rem;
-    line-height: 1.4;
-    -webkit-transition: background-color .1s,border-color .1s,color .1s,-webkit-box-shadow .1s;
-    transition: background-color .1s,border-color .1s,color .1s,-webkit-box-shadow .1s;
-    -o-transition: background-color .1s,border-color .1s,box-shadow .1s,color .1s;
-    transition: background-color .1s,border-color .1s,box-shadow .1s,color .1s;
-    transition: background-color .1s,border-color .1s,box-shadow .1s,color .1s,-webkit-box-shadow .1s;
-}
-.btn:hover {
-  background-color: transparent
-}
-
-/*Ends here*/
 #background-video {
 /*  making the video fullscreen  */
   position: fixed;
