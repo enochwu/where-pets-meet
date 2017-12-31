@@ -22,6 +22,9 @@ $(document).ready(function() {
 
 });
 
+<<<<<<< HEAD
+//Testing push to Ahmet.
+=======
 var soughtAnimal = "dog" // $(soughtAnimal).text;
 console.log(soughtAnimal);
 var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
@@ -88,6 +91,7 @@ $.getJSON(queryURL)
 // });
 
 
+>>>>>>> b75e1bb1fa07582ccec83911ededa91be2e77187
 
 //Components that we need in general terms
 // What should appear when the page opens. Dynamically generated
