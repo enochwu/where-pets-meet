@@ -108,7 +108,67 @@ $(document).ready(function() {
 
     // -----------------------------------------------------------
   });
-  
+
+      var queryURL2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
+
+      $.ajax({
+          url: queryURL2,
+          method: "GET",
+          success: function(response) {
+              // response goes here
+
+              console.log(response)
+              console.log("-----------------------")
+              console.log(response.results[0].geometry.location.lat)
+              console.log(response.results[0].geometry.location.lng)
+              latitude = response.results[0].geometry.location.lat;
+              longitude = response.results[0].geometry.location.lng;
+          }
+      });
+
+      var map;
+      var infowindow;
+      var longitude;
+      var latitude;
+
+      function initMap() {
+        var newArea = {lat: latitude, lng: longitude};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: newArea,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: newArea,
+          radius: 500,
+          type: ['park']
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+
 });
 
 //Components that we need in general terms
