@@ -177,12 +177,7 @@ $(document).ready(function() {
         '</div>' +
         '</div>'
 
-
-<<<<<<< HEAD
-
-=======
         $('#animalResults').append(animalCard)
->>>>>>> b12f0361d4004aec82368da9e76fd2bf249d8ac0
       }
 
 
