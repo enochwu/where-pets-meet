@@ -12,14 +12,14 @@ $(document).ready(function() {
   $('.collapsible').collapsible();
 
   // -----------------------------------------------------------
-  var addressPicker = new AddressPicker();
+  let addressPicker = new AddressPicker();
 
   $('#zip_code').typeahead(null, {
     displayKey: 'description',
     source: addressPicker.ttAdapter()
   });
   // Initialize Firebase
-  var config = {
+  const config = {
     apiKey: "AIzaSyDWOzsO-5lWbobwqB0XodtPUEbvHaei6pU",
     authDomain: "petproject-ebbc1.firebaseapp.com",
     databaseURL: "https://petproject-ebbc1.firebaseio.com",
@@ -30,19 +30,19 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
 
-  var database = firebase.database();
-  var zipInput;
-  var petName;
-  var petGender;
-  var petPhone;
-  var petEmail;
-  var aboutPet;
-  var petAddress;
-  var petCity;
-  var petState;
-  var petZipcode;
-  var petImgURL;
-  var petSearchResults = [];
+  let database = firebase.database();
+  let zipInput;
+  let petName;
+  let petGender;
+  let petPhone;
+  let petEmail;
+  let aboutPet;
+  let petAddress;
+  let petCity;
+  let petState;
+  let petZipcode;
+  let petImgURL;
+  let petSearchResults = [];
 
   $("#submit").on("click", function() {
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
     };
     database.ref().push(newSearch);
 
-    var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
+    var queryURL = `https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=${soughtAnimal}&location=${zipInput}&?count=5&callback=?`
     console.log(queryURL);
 
     $.ajax({
@@ -84,7 +84,7 @@ $(document).ready(function() {
       var results = petApiData.petfinder.pets
 
       $('#modalTitle').html(
-        'Showing ' + soughtAnimal + 's ' + 'near ' + zipInput
+        `Showing ${soughtAnimal}s near ${zipInput}`
       )
 
 
@@ -107,9 +107,9 @@ $(document).ready(function() {
 
 
         console.log("--------");
-        console.log(petCity + " " + petState + " " + petZipcode);
+        console.log(`${petCity} ${petState} ${petZipcode}`);
 
-        var location = (petCity + " " + petState + " " + petZipcode);
+        var location = `${petCity} ${petState} ${petZipcode}`;
         petImgURL = results.pet[i].media.photos.photo[2].$t;
 
         console.log('Image source link:');
@@ -139,35 +139,35 @@ $(document).ready(function() {
             return `${results.pet[i].contact.phone.$t}`;
           };
         };
-        var email = filterEmailResults(results);
-        var phone = filterPhoneResults(results);
+        let email = filterEmailResults(results);
+        let phone = filterPhoneResults(results);
 
-        var animalCard = '<div class="col s12 m6 l3">' +
-          '<div class="card medium sticky-action">' +
-          '<div class="card-image" id="imgCustom" >' +
-          '<img class="activator" src="' + petImgURL + '">' +
-          '<span class="card-title" id="txtCustom">' + petSearchResults[i].petName + ' (' + petSearchResults[i].petGender + ')' + '<br>' + petSearchResults[i].petCity + '</span>' +
-          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav" data-value=' + i + '><i class="material-icons">add</i></a>' +
-          '</div>' +
-          '<div class="card-content">' +
-          '<p>Phone: ' + petSearchResults[i].petPhone + '</p>' +
-          '<p>Email: ' + petSearchResults[i].petEmail + '</p>' +
-          '</div>' +
-          '<div class="card-action">' +
-          '<a class="activator" href="#">Read more...</a>' +
-          '</div>' +
-          '<div class="card-reveal">' +
-          '<span class="card-title grey-text text-darken-4">' + petSearchResults[i].petName + '<i class="material-icons right">close</i></span>' +
-          '<p>' + petSearchResults[i].aboutPet + '</p>' +
-          '<iframe ' +
-          'width="100%"' +
-          'height="300px"' +
-          'frameborder="0" style="border:0"' +
-          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petSearchResults[i].petCity + petSearchResults[i].petState + petSearchResults[i].petZipcode + '" allowfullscreen>' +
-          '</iframe>' +
-          '</div>' +
-          '</div>' +
-          '</div>'
+        let animalCard = `<div class="col s12 m6 l3">
+          <div class="card medium sticky-action">
+          <div class="card-image" id="imgCustom" >
+          <img class="activator" src="${petImgURL}">
+          <span class="card-title" id="txtCustom">${petSearchResults[i].petName} (${petSearchResults[i].petGender})<br>${petSearchResults[i].petCity}</span>
+          <a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav" data-value="${i}"><i class="material-icons">add</i></a>
+          </div>
+          <div class="card-content">
+          <p>Phone: ${petSearchResults[i].petPhone}</p>
+          <p>Email: <a href="mailto:${petSearchResults[i].petEmail}">${petSearchResults[i].petEmail}</a></p>
+          </div>
+          <div class="card-action">
+          <a class="activator" href="#">Read more...</a>
+          </div>
+          <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">${petSearchResults[i].petName}<i class="material-icons right">close</i></span>
+          <p>${petSearchResults[i].aboutPet}</p>
+          <iframe
+          width="100%"
+          height="300px"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=${ petSearchResults[i].petCity}${petSearchResults[i].petState}${petSearchResults[i].petZipcode}" allowfullscreen>
+          </iframe>
+          </div>
+          </div>
+          </div>`
 
         $('#animalResults').append(animalCard);
       }
@@ -175,7 +175,7 @@ $(document).ready(function() {
     }
   });
 
-  var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
+  let queryURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipInput}&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE`;
 
   $.ajax({
     url: queryURL,
